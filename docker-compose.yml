@@ -58,8 +58,9 @@ services:
       - laravel
 
   npm:
-    image: node
+    image: node:13.7
     container_name: npm
+    user: 1000:1000
     volumes:
       - ./src:/var/www/html
     working_dir: /var/www/html
