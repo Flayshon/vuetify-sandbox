@@ -3,7 +3,6 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v2
       - name: Build the stack
@@ -11,10 +10,8 @@ jobs:
           cp src/.env.example src/.env
           docker-compose up -d --build
           docker-compose run --rm npm install
-          #docker-compose run --rm --user root npm install
           docker-compose run --rm --user `id -u`:`id -g` composer install
           docker-compose run --rm --user `id -u`:`id -g` artisan migrate
-          docker-compose run --rm --entrypoint=ls npm -la
       - name: Run the tests
         run: |
           docker-compose run --rm --user `id -u`:`id -g` php ./vendor/bin/phpunit
