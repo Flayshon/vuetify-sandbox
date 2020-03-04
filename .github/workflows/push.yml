@@ -5,7 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: alpine
-      options: --user 1000
     steps:
       - uses: actions/checkout@v2
       - name: Build the stack
