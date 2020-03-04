@@ -12,6 +12,7 @@ jobs:
           #docker-compose up -d --build
           #echo "node:x:$(id -u):$(id -g)::/home/node:/bin/bash" > /tmp/fake-passwd
           docker-compose run --rm npm install
+          docker-compose run --rm --entrypoint=ls npm -la node_modules
           #docker-compose run --rm --user root npm install
           #docker-compose run --rm --user `id -u`:`id -g` composer install
           #docker-compose run --rm --user `id -u`:`id -g` artisan migrate
