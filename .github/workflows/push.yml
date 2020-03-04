@@ -9,9 +9,12 @@ jobs:
         run: |
           cp src/.env.example src/.env
           docker-compose up -d --build
-          docker-compose run --rm --user root npm install
-          docker-compose run --rm --user `id -u`:`id -g` composer install
-          docker-compose run --rm --user `id -u`:`id -g` artisan migrate
+          echo "node:x:$(id -u):$(id -g)::/home/node:/bin/bash" > /tmp/fake-passwd
+          docker run -it --rm -u $(id -u):$(id -g) -v /tmp/fake-passwd:/etc/passwd \
+          -v ~/tmp:/home/node -v $(pwd):/app -w /app npm install
+          #docker-compose run --rm --user root npm install
+          #docker-compose run --rm --user `id -u`:`id -g` composer install
+          #docker-compose run --rm --user `id -u`:`id -g` artisan migrate
       - name: Run the tests
         run: |
           docker-compose run --rm --user `id -u`:`id -g` php ./vendor/bin/phpunit
