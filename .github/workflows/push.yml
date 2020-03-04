@@ -3,8 +3,9 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      UID: 1000
+    container:
+      image: alpine
+      options: --user 1000
     steps:
       - uses: actions/checkout@v2
       - name: Build the stack
