@@ -3,22 +3,16 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu
-      options: --user 1000
     steps:
       - uses: actions/checkout@v2
       - name: Build the stack
         run: |
           cp src/.env.example src/.env
-          id -u
-          id -g
-          #docker-compose build
-          #docker-compose run --rm --user root npm install
-          #docker-compose run --rm --user `id -u`:`id -g` composer install
-          #docker-compose up -d
-          #docker-compose run --rm --user `id -u`:`id -g` artisan migrate
+          docker-compose build
+          docker-compose run --rm --user root npm install
+          docker-compose run --rm --user `id -u`:`id -g` composer install
+          docker-compose run --rm --user `id -u`:`id -g` artisan migrate
+          docker-compose up -d --build
       - name: Run the tests
         run: |
-          docker-compose run --rm --user `id -u`:`id -g` artisan migrate
           docker-compose run --rm --user `id -u`:`id -g` php ./vendor/bin/phpunit
