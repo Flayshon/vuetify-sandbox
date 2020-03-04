@@ -8,10 +8,11 @@ jobs:
       - name: Build the stack
         run: |
           cp src/.env.example src/.env
-          docker-compose build
-          docker-compose run --rm --user root npm install
-          docker-compose run --rm --user `id -u`:`id -g` composer install
-          ls -la src/vendor
+          id -u
+          id -g
+          #docker-compose build
+          #docker-compose run --rm --user root npm install
+          #docker-compose run --rm --user `id -u`:`id -g` composer install
           #docker-compose up -d
           #docker-compose run --rm --user `id -u`:`id -g` artisan migrate
       - name: Run the tests
