@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "dayspan-vuetify-2": "^0.2.0",
         "vuetify": "^2.2.15"
     }
 }

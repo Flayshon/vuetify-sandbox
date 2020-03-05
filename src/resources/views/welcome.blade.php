@@ -17,7 +17,7 @@
     </head>
     <body>
         <div id="app">
-            <v-app>
+            <!--<v-app>
                 <v-card width="400" class="mx-auto mt-5">
                     <v-card-title>
                         <h1 class="display-1">Sign In</h1>
@@ -43,7 +43,7 @@
                         <v-btn color="indo">Login</v-btn>
                     </v-card-actions>
                 </v-card>
-            </v-app>
+            </v-app>-->
         </div>
     </body>
 </html>

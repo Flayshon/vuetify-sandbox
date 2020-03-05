@@ -8,8 +8,16 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import Vuetify from "vuetify";
+import Vuetify from 'vuetify';
 Vue.use(Vuetify);
+
+import App from './components/App.vue'
+import DaySpanVuetify from 'dayspan-vuetify-2';
+Vue.use(DaySpanVuetify, {
+    methods: {
+        getDefaultEventColor: () => '#1976d2'
+    }
+});
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,7 +30,8 @@ Vue.use(Vuetify);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Vue.component('calendar-component', require('./components/CalendarComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,4 +42,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
-});
+    render: h => h(App)
+}).$mount('#app');
