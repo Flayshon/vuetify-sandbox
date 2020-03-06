@@ -13,10 +13,11 @@
         "@mdi/font": "^4.9.95",
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
-        "cross-env": "^7.0",
+        "cross-env": "^7.0.2",
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
+        "moment": "^2.24.0",
         "popper.js": "^1.12",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.20.1",
@@ -25,7 +26,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "dayspan-vuetify-2": "^0.2.0",
-        "vuetify": "^2.2.15"
+        "dayspan-vuetify": "^0.4.0",
+        "vuetify": "1.5.0"
     }
 }
